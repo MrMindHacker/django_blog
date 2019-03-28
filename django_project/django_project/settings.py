@@ -136,7 +136,7 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 MAIL_USE_TLS = True
 MAIL_USE_SSL = True
-MAIL_USERNAME = 
+MAIL_USERNAME = <Username>
 MAIL_PASSWORD = <Password>
 """
 EMAIL_HOST = 'smtp.gmail.com'
