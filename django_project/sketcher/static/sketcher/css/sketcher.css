@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+.column_new{
+  float: left;
+  width: 50%;
+  padding: 5px;
+  padding-right: 50px;
+}
+
+/* Clearfix (clear floats) */
+.row_new::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+}
+.header_new{
+align-content: center;
+text-align: center;
+padding-bottom: 10px;
+align-items: center;
+}
+.container1_new{
+background:#800080;
+margin: 0 auto;
+padding-bottom: 5px;
+content: "";
+}
+.title_new{
+color:white;
+}
+.container_new{
+padding-top: 50px;
+}

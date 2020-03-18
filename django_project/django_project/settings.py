@@ -23,10 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!bd2qsf3(q(1jce-a2f3-qquyrw1z5mo#w_6(&ydp02(fv(h4='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "sonarkeyur.pythonanywhere.com",
+    'localhost',
 ]
 
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sketcher'
 ]
 
 MIDDLEWARE = [

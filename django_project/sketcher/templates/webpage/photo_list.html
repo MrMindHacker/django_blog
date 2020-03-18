@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <!-- FORM TO UPLOAD THE IMAGES -->
+  <form method="post" enctype="multipart/form-data" id="formUpload">
+  {% csrf_token %}
+  {{ form | crispy}}
+  <button type="submit"> submit </button>
+  </form>
+
+{% endblock %}
