@@ -32,7 +32,7 @@ def photo_list(request):
             # print(type(img))
             image_process(obj, image)
             print('success\n')
-            return redirect('photo_list')
+            return redirect('view/'+str(obj.id))
 
     else:
         form = PhotoForm()
