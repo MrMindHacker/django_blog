@@ -16,22 +16,24 @@ def photo_list(request):
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
             obj = form.save(commit=False)
-            print(obj)
-            if request.FILES.get("original_image", None) is not None:
-                print(request.FILES["original_image"])
-                image = _grab_image(stream=request.FILES["original_image"])
-            else:
-                url = request.POST.get("url", None)
+            # name =obj.original_image.path.split('.')
+            obj.sketch_image = obj.original_image
+            # obj.sketch_image.path = obj.original_image.path.replace('media/', 'media/edited_images/')
+            obj.save()
+            # if request.FILES.get("original_image", None) is not None:
+            #     print(request.FILES["original_image"])
+            #     image = _grab_image(stream=request.FILES["original_image"])
+            # else:
+            #     url = request.POST.get("url", None)
 
-                if url is None:
-                    data["error"] = "No URL provided."
-                    return JsonResponse(data)
-                image = _grab_image(url=url)
-            # data["success"] = True
+            #     if url is None:
+            #         data["error"] = "No URL provided."
+            #         return JsonResponse(data)
+            #     image = _grab_image(url=url)
+            # # data["success"] = True
             # img = request.FILES.get('original_image')
             # print(type(img))
-            image_process(obj, image)
-            print('success\n')
+            # image_process(obj, image)
             return redirect('view/'+str(obj.id))
 
     else:
@@ -46,12 +48,18 @@ class ImageDetailView(DetailView):
 
 def image_process(obj, img):
     # img = cv2.imread(imgpath)
+    
     inv_img = img2sketch(img)
     name = str(obj.original_image).split('.')
-    cv2.imwrite('media/edited_images/'+name[0]+'_inv.'+name[1], inv_img) 
-    obj.sketch_image = 'edited_images/'+name[0]+'_inv.'+name[1]
-    cv2.imwrite('media/images/'+str(obj.original_image), img) 
+    with open('media/images/'+str(obj.original_image), 'rb') as destination_file:
+        destination_file = inv_img
+        obj.sketch_image.save(name[0]+'_inv.'+name[1], File(destination_file), save=False)
+    # obj.sketch_image = name[0]+'_inv.'+name[1].replace(' ', '_')
     obj.save()
+    print(obj.sketch_image, obj.original_image)
+
+    # cv2.imwrite('media/edited_images/'+str(obj.sketch_image).replace(' ', '_'), inv_img) 
+    
     # return obj.id
 
 def _grab_image(path=None, stream=None, url=None):
