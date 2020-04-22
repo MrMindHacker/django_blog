@@ -26,8 +26,7 @@ SECRET_KEY = '!bd2qsf3(q(1jce-a2f3-qquyrw1z5mo#w_6(&ydp02(fv(h4='
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "sonarkeyur.pythonanywhere.com",
-    'localhost',
+    '*'
 ]
 
 
@@ -128,7 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/sonarkeyur/django_blog/django_project/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

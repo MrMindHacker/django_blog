@@ -3,8 +3,10 @@ from PIL import Image
 import cv2
 import numpy as np
 from .sketch import img2sketch
+from django.contrib.auth.models import User
 # Create your models here.
 class PencilSketch(models.Model):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     original_image = models.ImageField(upload_to='images/')
     sketch_image = models.ImageField(upload_to='images/')
 

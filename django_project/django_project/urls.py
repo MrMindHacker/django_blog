@@ -30,11 +30,11 @@ urlpatterns = [
     path('password-reset/done', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
     path('profile/', user_views.profile, name='profile'),
-    path('', include('blog.urls')),
+    path('', include('sketcher.urls')),
     path('cars/', views.carList.as_view()),
     path('restapi/login/', views.login),
     path('restapi/register/', views.UserCreate.as_view()),   
-    path('sketcher/', include('sketcher.urls')), 
+    path('blog/', include('blog.urls')), 
 ]
 
 if settings.DEBUG:

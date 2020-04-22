@@ -6,6 +6,6 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('img/', photo_list, name = 'photo_list' ),
-    path('img/view/<int:pk>', ImageDetailView.as_view(), name='book-detail'),
+    path('', photo_list, name = 'photo_list' ),
+    path('/view/<int:pk>', ImageDetailView.as_view(), name='photo'),
 ]

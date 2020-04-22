@@ -8,14 +8,17 @@ import numpy as np
 from .sketch import img2sketch
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
+from django.contrib.auth.decorators import login_required
 
 
 
+# @login_required('login')
 def photo_list(request):
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
             obj = form.save(commit=False)
+            # obj.user = request.user
             # name =obj.original_image.path.split('.')
             obj.sketch_image = obj.original_image
             # obj.sketch_image.path = obj.original_image.path.replace('media/', 'media/edited_images/')
